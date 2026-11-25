@@ -17,14 +17,9 @@ sddm-kcm
 # Programme für den Anfang
 dolphin
 konsole
-kate
 ark
-gwenview
-okular
 spectacle
 firefox
-discover
-flatpak
 
 # Netzwerk, Ton, Grafik
 networkmanager

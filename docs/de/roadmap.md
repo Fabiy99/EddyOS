@@ -10,7 +10,8 @@ Was beschlossen ist und warum, steht im [Konzept](konzept.md).
 - [x] archiso-Profil: Live-ISO startet KDE Plasma 6 mit EddyOS-Namen
 - [x] GitHub Actions baut die ISO bei jedem Push, Releases über Tags
 - [x] Erster ISO-Bau erfolgreich (25.11.2026, 2,1 GB)
-- [ ] ISO auf echter Hardware und in einer VM getestet
+- [x] ISO in einer VM getestet (25.11.2026)
+- [ ] ISO auf echter Hardware getestet
 - [ ] GitHub Pages eingeschaltet, Website erreichbar
 
 ## Etappe 1: Installierbares Grundsystem
