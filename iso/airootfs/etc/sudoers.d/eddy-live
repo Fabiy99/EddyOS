@@ -1,0 +1,2 @@
+# Live-System: Benutzer eddy darf alles ohne Passwort.
+eddy ALL=(ALL:ALL) NOPASSWD: ALL
