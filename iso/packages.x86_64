@@ -1,0 +1,45 @@
+# Pakete, die EddyOS zusätzlich zu den releng-Paketen von archiso installiert.
+# Eine Zeile pro Paket. Zeilen mit # werden ignoriert.
+
+# Desktop: KDE Plasma 6
+plasma-desktop
+plasma-nm
+plasma-pa
+powerdevil
+bluedevil
+kscreen
+kde-gtk-config
+breeze-gtk
+xdg-desktop-portal-kde
+sddm
+sddm-kcm
+
+# Programme für den Anfang
+dolphin
+konsole
+kate
+ark
+gwenview
+okular
+spectacle
+firefox
+discover
+flatpak
+
+# Netzwerk, Ton, Grafik
+networkmanager
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+mesa
+vulkan-radeon
+vulkan-intel
+
+# Sprachen und Schrift: alle Sprachen fertig übersetzt, ohne locale-gen
+glibc-locales
+noto-fonts
+noto-fonts-emoji
+
+# System
+sudo

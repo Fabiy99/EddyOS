@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EddyOS</title>
+<link rel="icon" href="logo.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Manrope:wght@400;600&display=swap">
+<style>
+:root{--ink:#0b0f17;--ink2:#121826;--line:#243044;--text:#e7edf5;--muted:#8e9bb0;--accent:#2fd4bf;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--text);font:16px/1.6 "Manrope",system-ui,sans-serif}
+main{max-width:880px;margin:0 auto;padding:56px max(20px,env(safe-area-inset-left))}
+header{display:flex;gap:18px;align-items:center}
+h1{font:800 44px/1 "Sora",system-ui,sans-serif;margin:0;letter-spacing:-.02em}
+.lead{font-size:19px;color:var(--muted);max-width:60ch;margin:22px 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+a.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--text)}
+a.btn.sec{background:var(--ink2);color:var(--text);border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:48px}
+.grid div{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.grid b{font-family:"Sora",system-ui,sans-serif;display:block;margin-bottom:4px}
+.grid span{color:var(--muted);font-size:14.5px}
+.state{margin-top:40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <header><img src="logo.svg" width="64" height="64" alt=""><h1>EddyOS</h1></header>
+  <p class="lead">Eine Linux-Distribution auf Arch-Basis: schnell wie CachyOS, zum Spielen bequem wie eine Konsole, im Alltag einfach wie Windows. Mit eigenem Design und ohne Terminal.</p>
+  <div class="btns">
+    <a class="btn" href="vorschau.html">Vorschau ansehen</a>
+    <a class="btn sec" href="https://github.com/Fabiy99/EddyOS">Auf GitHub</a>
+    <a class="btn sec" href="https://github.com/Fabiy99/EddyOS/blob/main/docs/de/roadmap.md">Roadmap</a>
+  </div>
+  <div class="grid">
+    <div><b>Gaming-PC</b><span>Optimierter Kernel, Steam, Epic und GOG in einer Bibliothek.</span></div>
+    <div><b>Alter Mini-PC</b><span>Retro-Konsole fürs Wohnzimmer, auch mit altem BIOS.</span></div>
+    <div><b>Handheld</b><span>Steam Deck, ROG Ally, Legion Go und weitere.</span></div>
+    <div><b>Umsteiger</b><span>Daten und Spiele von Windows einfach mitnehmen.</span></div>
+  </div>
+  <p class="state">Stand: Konzeptphase. Die erste Live-ISO startet einen KDE-Plasma-Desktop, die EddyOS-Funktionen entstehen Schritt für Schritt.</p>
+</main>
+</body>
+</html>
