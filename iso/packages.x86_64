@@ -1,6 +1,11 @@
 # Pakete, die EddyOS zusätzlich zu den releng-Paketen von archiso installiert.
 # Eine Zeile pro Paket. Zeilen mit # werden ignoriert.
 
+# Kernel und Repo von CachyOS (BORE-Scheduler, sched-ext)
+linux-cachyos
+cachyos-keyring
+cachyos-mirrorlist
+
 # Desktop: KDE Plasma 6
 plasma-desktop
 plasma-nm
