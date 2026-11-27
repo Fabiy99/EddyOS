@@ -23,10 +23,37 @@ if [[ ! -d $releng ]]; then
   exit 1
 fi
 
+echo ":: CachyOS-Schlüssel auf dem Build-Rechner einrichten"
+# pacman prüft beim Bau jedes Paket mit dem Schlüsselbund des Build-Rechners.
+(cd "$here/keyring" && sha512sum --quiet -c SHA512SUMS)
+install -Dm644 -t /usr/share/pacman/keyrings/ \
+  "$here/keyring/cachyos.gpg" "$here/keyring/cachyos-trusted" "$here/keyring/cachyos-revoked"
+# --init legt den lokalen Signierschlüssel an, falls er fehlt (z. B. im archlinux-Container).
+pacman-key --init
+pacman-key --populate cachyos
+
 rm -rf "$work"
 mkdir -p "$work" "$out"
 profile="$work/profile"
 cp -a "$releng" "$profile"
+
+echo ":: CachyOS-Repo eintragen"
+# Das allgemeine x86-64-Repo läuft auf jeder 64-Bit-CPU, auch auf alten Mini-PCs.
+# Die optimierten Repos (v3, v4, Zen 4) wählt später der Installer passend zur CPU.
+sed -i '/^\[core\]/i [cachyos]\nServer = https://mirror.cachyos.org/repo/$arch/$repo\n' \
+  "$profile/pacman.conf"
+grep -q '^\[cachyos\]' "$profile/pacman.conf"
+
+echo ":: CachyOS-Kernel statt Arch-Kernel"
+sed -i '/^linux$/d' "$profile/packages.x86_64"
+grep -rlE 'vmlinuz-linux|initramfs-linux' "$profile/grub" "$profile/syslinux" "$profile/efiboot" \
+  | xargs sed -i -E 's/vmlinuz-linux\b/vmlinuz-linux-cachyos/g; s/initramfs-linux(-fallback)?\.img/initramfs-linux-cachyos\1.img/g'
+presets="$profile/airootfs/etc/mkinitcpio.d"
+if [[ -f $presets/linux.preset ]]; then
+  sed -E 's/vmlinuz-linux\b/vmlinuz-linux-cachyos/g; s/initramfs-linux(-fallback)?\.img/initramfs-linux-cachyos\1.img/g' \
+    "$presets/linux.preset" > "$presets/linux-cachyos.preset"
+  rm "$presets/linux.preset"
+fi
 
 echo ":: Rettungswerkzeuge aus releng entfernen"
 # releng ist eine Rettungs-ISO. Diese Werkzeuge braucht ein Desktop-Live-System nicht,

@@ -11,14 +11,16 @@ EddyOS-Änderungen darüber. Neue archiso-Versionen kommen so automatisch mit.
 | `profiledef.append.sh` | Name, Label und Dateirechte der ISO |
 | `airootfs/` | Dateien, die so ins Live-System kommen |
 | `users/*.append` | Live-Benutzer `eddy` ohne Passwort, mit sudo |
+| `keyring/` | CachyOS-Schlüssel für den Build-Rechner |
 
-## Was die ISO können soll (noch nicht auf Hardware getestet)
+## Was die ISO kann (in einer VM getestet, noch nicht auf echter Hardware)
 
 - Startet per UEFI und altem BIOS direkt in KDE Plasma 6 (Wayland), angemeldet als `eddy`.
 - Deutsch als Sprache und Tastatur, alle anderen Sprachen sind vorhanden.
-- Firefox, Dolphin, Discover mit Flatpak, NetworkManager, PipeWire.
+- CachyOS-Kernel (`linux-cachyos`) aus dem allgemeinen CachyOS-Repo, läuft auf jeder 64-Bit-CPU.
+- Firefox, Dolphin, Konsole, NetworkManager, PipeWire.
 
-Noch nicht dabei: Installer, CachyOS-Repos, EddyOS-Design. Siehe [Roadmap](../docs/de/roadmap.md).
+Noch nicht dabei: Installer, CPU-optimierte Repos, EddyOS-Design. Siehe [Roadmap](../docs/de/roadmap.md).
 
 ## Selbst bauen
 
