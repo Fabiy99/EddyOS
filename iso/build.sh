@@ -28,6 +28,12 @@ mkdir -p "$work" "$out"
 profile="$work/profile"
 cp -a "$releng" "$profile"
 
+echo ":: Rettungswerkzeuge aus releng entfernen"
+# releng ist eine Rettungs-ISO. Diese Werkzeuge braucht ein Desktop-Live-System nicht,
+# und ohne sie bleibt die ISO unter der 2-GB-Grenze für GitHub-Releases.
+sed -i -E '/^(bcachefs-tools|clonezilla|cloud-init|darkhttpd|ddrescue|fsarchiver|irssi|lftp|lynx|mc|nmap|openconnect|openvpn|partclone|partimage|pptpclient|testdisk|vpnc|wvdial|xl2tpd)$/d' \
+  "$profile/packages.x86_64"
+
 echo ":: Pakete ergänzen"
 grep -vE '^\s*(#|$)' "$here/packages.x86_64" >> "$profile/packages.x86_64"
 

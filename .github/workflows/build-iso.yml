@@ -32,6 +32,16 @@ jobs:
       - name: ISO bauen
         run: ./iso/build.sh
 
+      - name: Größe prüfen
+        # GitHub nimmt in Releases nur Dateien unter 2 GiB an.
+        run: |
+          size=$(stat -c %s out/*.iso)
+          echo "ISO: $((size / 1024 / 1024)) MiB"
+          if [ "$size" -ge 2147483648 ]; then
+            echo "::error::ISO ist größer als 2 GiB und passt nicht in ein GitHub-Release."
+            exit 1
+          fi
+
       - name: Prüfsumme
         run: cd out && sha256sum *.iso > SHA256SUMS && cat SHA256SUMS
 
