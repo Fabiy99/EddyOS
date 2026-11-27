@@ -28,7 +28,8 @@ echo ":: CachyOS-Schlüssel auf dem Build-Rechner einrichten"
 (cd "$here/keyring" && sha512sum --quiet -c SHA512SUMS)
 install -Dm644 -t /usr/share/pacman/keyrings/ \
   "$here/keyring/cachyos.gpg" "$here/keyring/cachyos-trusted" "$here/keyring/cachyos-revoked"
-[[ -d /etc/pacman.d/gnupg ]] || pacman-key --init
+# --init legt den lokalen Signierschlüssel an, falls er fehlt (z. B. im archlinux-Container).
+pacman-key --init
 pacman-key --populate cachyos
 
 rm -rf "$work"
